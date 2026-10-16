@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071a24" />
+  <title>Viresco ChargeFlow | EV charging prototype</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="prototype-banner">Illustrative case-study prototype · No live charger, customer or Waitrose data</div>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <button class="brand" data-screen="home" aria-label="Viresco ChargeFlow home">
+        <span class="brand-mark">V</span>
+        <span><strong>Viresco ChargeFlow</strong><small>Powered by Viresco eMobility</small></span>
+      </button>
+
+      <nav class="nav-list">
+        <button class="nav-item active" data-screen="home"><span>⌂</span>Home</button>
+        <button class="nav-item" data-screen="map"><span>⌖</span>Find charging</button>
+        <button class="nav-item" data-screen="journey"><span>➜</span>My journey</button>
+        <button class="nav-item" data-screen="charging"><span>ϟ</span>Charging</button>
+        <button class="nav-item" data-screen="rewards"><span>★</span>Rewards</button>
+        <button class="nav-item" data-screen="impact"><span>◉</span>Impact</button>
+        <button class="nav-item" data-screen="operator"><span>▥</span>Operator view</button>
+      </nav>
+
+      <div class="sidebar-note">
+        <span class="pulse-dot"></span>
+        <div><strong>Network healthy</strong><small>Prototype data</small></div>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">VIRESCO EMOBILITY · PROTOTYPE</p>
+          <h1 id="pageTitle">Good evening, Ben</h1>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="notificationBtn" aria-label="Notifications">●</button>
+          <div class="profile"><span>BR</span><div><strong>Ben Rix</strong><small>1,840 points</small></div></div>
+        </div>
+      </header>
+
+      <section class="screen active" id="home">
+        <div class="hero-card">
+          <div class="hero-copy">
+            <span class="status-pill"><i></i> Vehicle connected</span>
+            <h2>Ready for your next journey.</h2>
+            <p>Viresco ChargeFlow recommends the best station using reliability, availability, speed, accessibility, your route and useful services while you charge.</p>
+            <div class="hero-actions">
+              <button class="primary" data-screen="map">Find my best charger</button>
+              <button class="secondary" data-screen="journey">Plan a journey</button>
+            </div>
+          </div>
+          <div class="battery-visual" aria-label="Vehicle battery at 72 percent">
+            <svg viewBox="0 0 160 160" role="img">
+              <circle class="ring-bg" cx="80" cy="80" r="65"></circle>
+              <circle class="ring-value" cx="80" cy="80" r="65" style="--progress:72"></circle>
+            </svg>
+            <div><strong>72%</strong><span>198 mi range</span></div>
+          </div>
+        </div>
+
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-icon green">ϟ</span><div><small>Network availability</small><strong>94%</strong><p>Across demo locations</p></div></article>
+          <article class="stat-card"><span class="stat-icon blue">✓</span><div><small>Successful sessions</small><strong>99.1%</strong><p>Your preferred sites</p></div></article>
+          <article class="stat-card"><span class="stat-icon amber">★</span><div><small>Rewards balance</small><strong>1,840</strong><p>160 until your next reward</p></div></article>
+        </div>
+
+        <div class="two-col">
+          <article class="panel recommended">
+            <div class="panel-heading"><div><p class="eyebrow">AI RECOMMENDED FOR YOU</p><h3>Manchester Central Hub</h3></div><span class="reliability">99.4 confidence</span></div>
+            <div class="mini-map">
+              <div class="road road-a"></div><div class="road road-b"></div><div class="road road-c"></div>
+              <span class="map-pin home-pin">⌂</span><span class="map-pin charger-pin">ϟ</span>
+            </div>
+            <div class="site-summary"><div><strong>6</strong><span>available</span></div><div><strong>150 kW</strong><span>max speed</span></div><div><strong>4 min</strong><span>drive</span></div><div><strong>£0.56</strong><span>per kWh</span></div></div>
+            <div class="why-recommended"><strong>Why this station?</strong><span>✓ 6 chargers available</span><span>✓ Lowest predicted wait nearby</span><span>✓ Waitrose collection available</span><span>✓ Step-free access</span></div><button class="primary full" id="viewRecommended">View recommended station</button>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading"><div><p class="eyebrow">RECENT ACTIVITY</p><h3>Your charging</h3></div><button class="text-button" data-screen="impact">View impact</button></div>
+            <div class="activity-row"><span class="activity-icon">ϟ</span><div><strong>Trafford Park</strong><small>9 Oct · 34.2 kWh</small></div><b>£18.64</b></div>
+            <div class="activity-row"><span class="activity-icon">ϟ</span><div><strong>Leeds City Gateway</strong><small>3 Oct · 28.7 kWh</small></div><b>£15.78</b></div>
+            <div class="activity-row"><span class="activity-icon">ϟ</span><div><strong>Birmingham North</strong><small>25 Sep · 41.1 kWh</small></div><b>£22.19</b></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen" id="map">
+        <div class="section-intro"><div><p class="eyebrow">VIRESCO NATIONAL NETWORK</p><h2>Find the best charger for your journey</h2><p>Compare illustrative availability, speed, price, accessibility, amenities and confidence. Recommendations explain why a station fits your journey.</p></div><div class="legend"><span><i class="available"></i>Available</span><span><i class="busy"></i>Busy</span><span><i class="offline"></i>Unavailable</span></div></div>
+        <div class="map-layout">
+          <div class="uk-map-card">
+            <div class="map-toolbar"><label><span>⌕</span><input id="siteSearch" type="search" placeholder="Search city or charging site" /></label><button id="locateBtn">Use my location</button><label class="access-toggle"><input type="checkbox" id="accessibleOnly"> Accessible only</label></div>
+            <div class="uk-map-wrap">
+              <svg class="uk-map" viewBox="0 0 520 660" aria-label="Stylised map of Great Britain with illustrative Viresco charging locations" role="img">
+  <defs>
+    <linearGradient id="land" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef4ff"/><stop offset="1" stop-color="#d8e6ff"/></linearGradient>
+    <filter id="mapShadow"><feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#29175f" flood-opacity=".16"/></filter>
+  </defs>
+  <g filter="url(#mapShadow)">
+    <!-- Great Britain, deliberately simplified but geographically recognisable -->
+    <path class="land" d="M277 22 L320 36 L340 67 L365 82 L354 107 L382 126 L365 151 L379 171 L355 193 L352 225 L329 246 L342 275 L323 302 L329 329 L312 354 L325 382 L307 414 L320 446 L303 481 L319 510 L297 537 L308 569 L287 598 L253 620 L220 617 L202 596 L168 601 L139 587 L112 592 L84 578 L103 560 L139 548 L170 526 L195 505 L205 476 L190 449 L199 417 L182 389 L192 358 L176 329 L194 300 L188 274 L210 253 L218 224 L238 205 L230 180 L248 158 L243 132 L263 111 L258 87 L274 68 L264 44 Z"/>
+    <!-- Wales peninsula -->
+    <path class="land" d="M194 363 L162 354 L137 367 L120 394 L132 416 L161 421 L180 407 L202 414 L209 389 Z"/>
+    <!-- Cornwall and Devon -->
+    <path class="land" d="M202 536 L166 530 L132 540 L99 548 L66 563 L86 578 L119 572 L151 558 L186 553 Z"/>
+    <!-- East Anglia -->
+    <path class="land" d="M307 448 L337 452 L353 470 L348 493 L322 502 L303 481 Z"/>
+    <!-- Kent -->
+    <path class="land" d="M296 566 L333 568 L362 580 L346 596 L307 590 L287 598 Z"/>
+    <!-- Isle of Wight -->
+    <path class="land island" d="M238 609 L259 610 L252 621 L234 620 Z"/>
+  </g>
+  <g id="mapMarkers"></g>
+</svg>
+              <div class="map-caption">Illustrative prototype locations and data</div>
+            </div>
+          </div>
+
+          <aside class="site-panel" id="sitePanel">
+            <div class="site-panel-head"><span class="status-pill"><i></i>Available now</span><button id="closeSite" aria-label="Close site details">×</button></div>
+            <p class="eyebrow" id="siteCity">MANCHESTER</p>
+            <h2 id="siteName">Manchester Central Hub</h2>
+            <p id="siteAddress">Deansgate, Manchester</p>
+            <div class="score-card"><div><small>Viresco recommendation confidence</small><strong id="siteReliability">99.4</strong><span>/ 100</span></div><p>Combines indicative availability, successful sessions and fault history.</p></div>
+            <div class="site-metrics"><div><strong id="siteAvailable">6</strong><span>available</span></div><div><strong id="siteSpeed">150 kW</strong><span>maximum</span></div><div><strong id="siteWait">4 min</strong><span>est. wait</span></div></div>
+            <h3>Amenities & access</h3><div class="amenities" id="siteAmenities"></div><div class="ai-reason"><strong>Why recommended</strong><p id="siteReason">Strong reliability, low predicted wait and useful services.</p></div><div class="support-links"><button id="reportFaultBtn">Report a fault</button><button id="alternativeBtn">Find alternative</button><button id="supportBtn">24/7 support</button></div>
+            <div class="price-line"><span>Indicative price</span><strong id="sitePrice">£0.56/kWh</strong></div>
+            <button class="primary full" id="reserveBtn">Reserve this charger</button>
+            <button class="secondary full" id="routeBtn">Add to journey</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="screen" id="journey">
+        <div class="section-intro"><div><p class="eyebrow">MY JOURNEY</p><h2>Manchester to Birmingham</h2><p>ChargeFlow selected Stafford North Gateway based on your route, predicted battery level, charger availability and reliability.</p></div><span class="status-pill reserved"><i></i>Bay 04 reserved</span></div>
+        <div class="journey-layout">
+          <article class="route-card route-story-card">
+            <div class="route-story">
+              <div class="journey-stop"><div class="journey-node start-node"></div><div class="journey-copy"><span>START · 18:24</span><strong>Manchester</strong><small>72% battery · 198 mi range</small></div></div>
+              <div class="journey-connector"><span>54 min drive</span></div>
+              <div class="ai-stop-card"><div class="ai-stop-badge">AI-selected charging stop</div><div class="ai-stop-main"><div class="charge-node">ϟ</div><div><span>19:18 · CHARGE FOR 22 MIN</span><h3>Stafford North Gateway</h3><p>Bay 04 reserved · 150 kW rapid charging</p></div></div><div class="ai-stop-reasons"><span>✓ 99.2 confidence</span><span>✓ Charger available</span><span>✓ Waitrose available</span><span>✓ 18% arrival battery</span></div></div>
+              <div class="journey-connector"><span>41 min drive</span></div>
+              <div class="journey-stop"><div class="journey-node end-node"></div><div class="journey-copy"><span>ARRIVE · 20:21</span><strong>Birmingham</strong><small>52% predicted battery</small></div></div>
+            </div>
+            <div class="route-stats"><div><strong>86 mi</strong><span>total distance</span></div><div><strong>1h 57m</strong><span>including charge</span></div><div><strong>22 min</strong><span>planned charge</span></div></div>
+          </article>
+          <article class="panel itinerary journey-summary">
+            <div class="journey-summary-head"><p class="eyebrow">JOURNEY PLAN</p><h3>Everything is ready</h3><p>Your charging stop is reserved and built into the route.</p></div>
+            <div class="timeline-item"><span class="timeline-dot current"></span><div><small>18:24 · START</small><h3>Manchester</h3><p>Leave with 72% battery.</p></div></div>
+            <div class="timeline-item charge-stop"><span class="timeline-dot bolt">ϟ</span><div><small>19:18 · PLANNED CHARGE</small><h3>Stafford North Gateway</h3><p>Bay 04 · 150 kW · 22 minutes</p><span class="reliability">99.2 confidence</span></div></div>
+            <div class="timeline-item"><span class="timeline-dot destination"></span><div><small>20:21 · ARRIVE</small><h3>Birmingham</h3><p>Arrive with a predicted 52% battery.</p></div></div>
+            <div class="journey-ready"><span>✓</span><div><strong>Ready to go</strong><small>Reservation confirmed · route planned · charging stop selected</small></div></div>
+            <button class="primary full" id="startJourneyBtn">Start journey</button>
+          </article>
+        </div>
+      </section>
+      <section class="screen" id="charging">
+        <div class="charging-stage">
+          <div class="charging-copy"><span class="status-pill"><i></i>Charging successfully</span><p class="eyebrow">STAFFORD NORTH GATEWAY · BAY 04</p><h2>Your car is charging</h2><p>Progress is simulated for this presentation prototype.</p></div>
+          <div class="charge-ring" id="chargeRing"><div><span id="chargePercent">64%</span><small>152 mi range</small></div></div>
+          <div class="charge-stats"><div><small>Energy delivered</small><strong id="energyValue">26.0 kWh</strong></div><div><small>Current cost</small><strong id="costValue">£14.56</strong></div><div><small>Time remaining</small><strong id="timeValue">18 min</strong></div><div><small>Current speed</small><strong>118 kW</strong></div></div>
+          <div class="session-actions"><button class="secondary" id="pauseDemo">Pause demo</button><button class="danger" id="stopCharge">Stop charging</button></div>
+          <article class="offer-strip waitrose"><span>W</span><div><strong>Waitrose while you charge</strong><p>Your collection can be ready in 12 minutes, before charging completes.</p></div><button id="openWaitroseBtn">Order now</button></article><div class="food-picker" id="foodPicker"><div class="food-head"><div><p class="eyebrow">WAITROSE PARTNER CONCEPT</p><h3>Order while you charge</h3></div><button id="closeFoodBtn">×</button></div><div class="food-grid"><button class="food-item" data-item="Flat white"><span>☕</span><strong>Flat white</strong><small>Ready in 6 min · £3.40</small></button><button class="food-item" data-item="Lunch deal"><span>🥪</span><strong>Lunch deal</strong><small>Ready in 10 min · £6.50</small></button><button class="food-item" data-item="Salad box"><span>🥗</span><strong>Salad box</strong><small>Ready in 8 min · £5.75</small></button></div><div class="collection-status" id="collectionStatus">Select an item to add it to your illustrative collection.</div></div>
+        </div>
+      </section>
+
+      <section class="screen" id="rewards">
+        <div class="rewards-hero"><div><p class="eyebrow">VIRESCO CHARGEFLOW REWARDS</p><h2>1,840 points</h2><p>160 more points unlocks your next reward.</p></div><div class="reward-medal">★</div></div>
+        <div class="progress-track"><span style="width:92%"></span></div>
+        <div class="reward-grid">
+          <article class="reward-card featured"><span class="reward-emoji">☕</span><p class="eyebrow">READY TO CLAIM</p><h3>Barista-made drink</h3><p>Redeem at participating on-site coffee partners during this demo journey.</p><button class="primary claim-btn">Claim reward</button></article>
+          <article class="reward-card"><span class="reward-emoji">ϟ</span><p class="eyebrow">2,500 POINTS</p><h3>£5 charging credit</h3><p>Apply credit to a future charging session.</p><button class="secondary" disabled>660 points to go</button></article>
+          <article class="reward-card"><span class="reward-emoji">▣</span><p class="eyebrow">PARTNER OFFER</p><h3>20% off food to go</h3><p>An illustrative offer designed around charging dwell time.</p><button class="secondary claim-btn">Activate offer</button></article>
+        </div>
+      </section>
+
+      <section class="screen" id="impact">
+        <div class="section-intro"><div><p class="eyebrow">YOUR IMPACT</p><h2>Driving change, one charge at a time</h2><p>Illustrative personal analytics demonstrate how visible impact could support loyalty and trust.</p></div></div>
+        <div class="impact-grid"><article><span>◉</span><small>Indicative CO₂ avoided</small><strong>842 kg</strong><p>This year</p></article><article><span>ϟ</span><small>Electric distance</small><strong>5,280 mi</strong><p>This year</p></article><article><span>↗</span><small>Renewable share</small><strong>93%</strong><p>Across recorded sessions</p></article></div>
+        <article class="panel chart-panel"><div class="panel-heading"><div><p class="eyebrow">CHARGING HISTORY</p><h3>Energy charged by month</h3></div><span class="prototype-label">Illustrative</span></div><div class="bar-chart"><div style="--h:45%"><span>May</span></div><div style="--h:62%"><span>Jun</span></div><div style="--h:55%"><span>Jul</span></div><div style="--h:78%"><span>Aug</span></div><div style="--h:68%"><span>Sep</span></div><div class="current" style="--h:88%"><span>Oct</span></div></div></article>
+      </section>
+
+      <section class="screen" id="operator">
+        <div class="section-intro"><div><p class="eyebrow">CLIENT VALUE VIEW · ILLUSTRATIVE</p><h2>Viresco experience performance</h2><p>A presentation view linking the proposition to the case-study KPIs. Figures are mock data, not operational results.</p></div><span class="prototype-label">Prototype data</span></div>
+        <div class="operator-grid">
+          <article><small>EV customer NPS</small><strong>72</strong><span>Experience</span></article>
+          <article><small>Session success</small><strong>98.7%</strong><span>Trust</span></article>
+          <article><small>Network availability</small><strong>99.1%</strong><span>Operations</span></article>
+          <article><small>Repeat visits</small><strong>+18%</strong><span>Loyalty</span></article>
+          <article><small>Waitrose offer activation</small><strong>29%</strong><span>Dwell value</span></article>
+          <article><small>Illustrative value / session</small><strong>£14.20</strong><span>Commercial</span></article>
+        </div>
+        <div class="two-col operator-panels"><article class="panel"><p class="eyebrow">VALUE PATHWAY</p><h3>From feature to outcome</h3><div class="value-flow"><span>Reliable recommendation</span><b>→</b><span>Successful charge</span><b>→</b><span>Repeat visit</span><b>→</b><span>Charging + retail value</span></div></article><article class="panel"><p class="eyebrow">PILOT MEASURES</p><h3>What Viresco should baseline</h3><ul class="clean-list"><li>Customer effort and time to start</li><li>Completed session rate</li><li>Payment failure and support contacts</li><li>Offer activation and station spend</li><li>Accessible journey feedback</li></ul></article></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal"><button class="modal-close" id="modalClose">×</button><span class="success-icon">✓</span><h2>Charger reserved</h2><p id="modalCopy">Bay 04 is held for the next 15 minutes.</p><div class="reservation-code"><small>RESERVATION</small><strong>CF-1048</strong></div><button class="primary full" id="viewJourneyBtn">View my journey</button></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
