@@ -40,7 +40,7 @@
         </div>
         <div class="top-actions">
           <button class="icon-button" id="notificationBtn" aria-label="Notifications">●</button>
-          <div class="profile"><span>BR</span><div><strong>Ben Rix</strong><small>1,840 points</small></div></div>
+          <div class="profile"><span>BR</span><div><strong>Ben Rix</strong><small id="profilePoints">1,840 points</small></div></div>
         </div>
       </header>
 
@@ -169,8 +169,36 @@
         </div>
       </section>
 
+      <section class="screen" id="review">
+        <div class="review-stage">
+          <div class="review-complete-icon">✓</div>
+          <p class="eyebrow">CHARGING COMPLETE</p>
+          <h2>How was your charging experience?</h2>
+          <p class="review-lede">Leave a quick review to unlock your reward and help Viresco improve future ChargeFlow journeys.</p>
+          <div class="review-card">
+            <p class="review-question">Rate your experience</p>
+            <div class="star-rating" id="starRating" aria-label="Select a rating out of five">
+              <button type="button" class="star-btn" data-rating="1" aria-label="1 star">★</button><button type="button" class="star-btn" data-rating="2" aria-label="2 stars">★</button><button type="button" class="star-btn" data-rating="3" aria-label="3 stars">★</button><button type="button" class="star-btn" data-rating="4" aria-label="4 stars">★</button><button type="button" class="star-btn" data-rating="5" aria-label="5 stars">★</button>
+            </div>
+            <p class="review-hint" id="reviewHint">Select a star rating to continue</p>
+            <div class="feedback-chips"><button type="button" class="feedback-chip">Reliable charger</button><button type="button" class="feedback-chip">Easy to use</button><button type="button" class="feedback-chip">Fast charging</button><button type="button" class="feedback-chip">Great facilities</button></div>
+            <button class="primary full review-submit" id="submitReviewBtn" disabled>Submit review & unlock reward</button>
+          </div>
+          <p class="review-feedback-note">Your feedback helps Viresco identify opportunities to improve ChargeFlow.</p>
+        </div>
+      </section>
+      <section class="screen" id="reward-unlocked">
+        <div class="reward-unlocked-stage">
+          <div class="reward-burst">★</div>
+          <p class="eyebrow">REWARD UNLOCKED</p>
+          <h2>+100 FlowPoints</h2>
+          <p>Thanks for helping improve the Viresco charging experience.</p>
+          <div class="points-balance"><small>Your new balance</small><strong>1,940 FlowPoints</strong></div>
+          <div class="reward-actions"><button class="primary" data-screen="rewards">View rewards</button><button class="secondary" data-screen="home">Back to home</button></div>
+        </div>
+      </section>
       <section class="screen" id="rewards">
-        <div class="rewards-hero"><div><p class="eyebrow">VIRESCO CHARGEFLOW REWARDS</p><h2>1,840 points</h2><p>160 more points unlocks your next reward.</p></div><div class="reward-medal">★</div></div>
+        <div class="rewards-hero"><div><p class="eyebrow">VIRESCO CHARGEFLOW REWARDS</p><h2 id="rewardsPoints">1,840 points</h2><p>160 more points unlocks your next reward.</p></div><div class="reward-medal">★</div></div>
         <div class="progress-track"><span style="width:92%"></span></div>
         <div class="reward-grid">
           <article class="reward-card featured"><span class="reward-emoji">☕</span><p class="eyebrow">READY TO CLAIM</p><h3>Barista-made drink</h3><p>Redeem at participating on-site coffee partners during this demo journey.</p><button class="primary claim-btn">Claim reward</button></article>
