@@ -27,11 +27,93 @@ function filterMarkers(q,access){q=q.toLowerCase().trim();document.querySelector
 locateBtn.onclick=()=>{selectSite(selectedSite);toast('Manchester shown as the illustrative nearest location')};
 const modal=document.getElementById('modalBackdrop');reserveBtn.onclick=()=>{modalCopy.textContent=`A bay at ${selectedSite.name} is held for the next 15 minutes.`;modal.classList.add('open')};modalClose.onclick=()=>modal.classList.remove('open');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};viewJourneyBtn.onclick=()=>{modal.classList.remove('open');showScreen('journey')};routeBtn.onclick=()=>{toast(`${selectedSite.name} added to your journey`);setTimeout(()=>showScreen('journey'),450)};
 reportFaultBtn.onclick=()=>toast('Fault report opened · prototype only');alternativeBtn.onclick=()=>{selectSite(sites.find(s=>s.id==='birmingham'));toast('Showing the next suitable illustrative alternative')};supportBtn.onclick=()=>toast('24/7 support route opened · prototype only');notificationBtn.onclick=()=>toast('No new alerts · demo network healthy');startJourneyBtn.onclick=()=>{toast('Demo journey started');setTimeout(()=>showScreen('charging'),550)};
-let charge=64,energy=26,cost=14.56,remaining=18,running=true,sessionCompleted=false;
-function completeDemoCharge(){if(sessionCompleted)return;sessionCompleted=true;running=false;charge=80;remaining=0;chargeRing.style.setProperty('--charge',charge);chargePercent.textContent='80%';timeValue.textContent='Complete';toast('Charge complete · review unlocked');setTimeout(()=>showScreen('review'),700);}
-setInterval(()=>{if(!running||!charging.classList.contains('active')||sessionCompleted)return;charge=Math.min(80,charge+.8);energy+=.45;cost+=.25;remaining=Math.max(0,remaining-1);chargeRing.style.setProperty('--charge',charge);chargePercent.textContent=`${Math.floor(charge)}%`;energyValue.textContent=`${energy.toFixed(1)} kWh`;costValue.textContent=`£${cost.toFixed(2)}`;timeValue.textContent=remaining>0?`${Math.ceil(remaining)} min`:'Complete';if(charge>=80||remaining<=0)completeDemoCharge();},900);
-pauseDemo.onclick=e=>{running=!running;e.target.textContent=running?'Pause demo':'Resume demo';toast(running?'Charging animation resumed':'Charging animation paused')};
-stopCharge.onclick=()=>completeDemoCharge();
+let charge = 90;
+let energy = 26;
+let cost = 14.56;
+let remaining = 10;
+let running = true;
+let sessionCompleted = false;
+
+// Set the charging screen to 90% immediately
+chargeRing.style.setProperty('--charge', charge);
+chargePercent.textContent = '90%';
+timeValue.textContent = '10 min';
+
+function completeDemoCharge() {
+    if (sessionCompleted) return;
+
+    sessionCompleted = true;
+    running = false;
+    charge = 100;
+    remaining = 0;
+
+    chargeRing.style.setProperty('--charge', 100);
+    chargePercent.textContent = '100%';
+    timeValue.textContent = 'Complete';
+
+    toast('Charge complete · review unlocked');
+
+    setTimeout(() => {
+        showScreen('review');
+    }, 700);
+}
+
+setInterval(() => {
+
+    if (
+        !running ||
+        !charging.classList.contains('active') ||
+        sessionCompleted
+    ) {
+        return;
+    }
+
+    // Demo progression: 90% → 100%
+    charge = Math.min(100, charge + 1);
+
+    energy += 0.45;
+    cost += 0.25;
+    remaining = Math.max(0, remaining - 1);
+
+    chargeRing.style.setProperty('--charge', charge);
+
+    chargePercent.textContent =
+        `${Math.floor(charge)}%`;
+
+    energyValue.textContent =
+        `${energy.toFixed(1)} kWh`;
+
+    costValue.textContent =
+        `£${cost.toFixed(2)}`;
+
+    timeValue.textContent =
+        remaining > 0
+            ? `${Math.ceil(remaining)} min`
+            : 'Complete';
+
+    if (charge >= 100 || remaining <= 0) {
+        completeDemoCharge();
+    }
+
+}, 900);
+
+pauseDemo.onclick = e => {
+
+    running = !running;
+
+    e.target.textContent =
+        running
+            ? 'Pause demo'
+            : 'Resume demo';
+
+    toast(
+        running
+            ? 'Charging animation resumed'
+            : 'Charging animation paused'
+    );
+};
+
+stopCharge.onclick = () => completeDemoCharge();
 openWaitroseBtn.onclick=()=>foodPicker.classList.add('open');closeFoodBtn.onclick=()=>foodPicker.classList.remove('open');document.querySelectorAll('.food-item').forEach(b=>b.onclick=()=>{collectionStatus.innerHTML=`<strong>${b.dataset.item} added.</strong> Illustrative collection will be ready before charging completes.`;toast(`${b.dataset.item} added to collection`)});
 document.querySelectorAll('.claim-btn').forEach(b=>b.onclick=()=>{b.textContent='Added to wallet ✓';b.disabled=true;toast('Reward added to Viresco ChargeFlow wallet')});
 
